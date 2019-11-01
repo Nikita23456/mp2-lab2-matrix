@@ -31,12 +31,18 @@ TEST(TVector, can_create_copied_vector)
 
 TEST(TVector, copied_vector_is_equal_to_source_one)
 {
-  ADD_FAILURE();
+	TVector<int> v(10);
+	v[4] = 12;
+	TVector<int> v2(v);
+	EXPECT_EQ(v2, v);
 }
 
 TEST(TVector, copied_vector_has_its_own_memory)
 {
-  ADD_FAILURE();
+	TVector<int> v(10);
+	v[4] = 12;
+	TVector<int> v2(v);
+	EXPECT_NE(&v2, &v);
 }
 
 TEST(TVector, can_get_size)
@@ -63,27 +69,39 @@ TEST(TVector, can_set_and_get_element)
 
 TEST(TVector, throws_when_set_element_with_negative_index)
 {
-  ADD_FAILURE();
+	ASSERT_ANY_THROW(TVector<int> v(4, -2));
 }
 
 TEST(TVector, throws_when_set_element_with_too_large_index)
 {
-  ADD_FAILURE();
+	ASSERT_ANY_THROW(TVector<int> v(4, MAX_VECTOR_SIZE +1));
 }
 
 TEST(TVector, can_assign_vector_to_itself)
 {
-  ADD_FAILURE();
+	TVector<int> v(10);
+	v[0] = 321;
+	v = v;
+	EXPECT_EQ(v, v);
 }
 
 TEST(TVector, can_assign_vectors_of_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> v(10);
+	TVector<int> v2(10);
+	v[0] = 321;
+	v2 = v;
+	EXPECT_EQ(v2, v);
 }
 
 TEST(TVector, assign_operator_change_vector_size)
 {
-  ADD_FAILURE();
+	TVector<int> v1(4), v2(7);
+	for (int i = 0; i < 4; i++)
+	v1[i] = 10;
+	v2 = v1;
+	EXPECT_EQ(4, v2.GetSize());
+
 }
 
 TEST(TVector, can_assign_vectors_of_different_size)

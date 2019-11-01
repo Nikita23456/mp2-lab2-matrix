@@ -167,9 +167,9 @@ template <class ValType> // сложение
 TVector<ValType> TVector<ValType>::operator+(const TVector<ValType> &v)
 {
 	if (Size != v.Size) throw ("No correct");
-	TVector<ValType> t(*this);
+	  TVector<ValType> t(*this);
 	for (int i = 0; i < Size; i++)
-		t.pVector[i] = t.pVector[i] + v.pVector;
+		t.pVector[i] = t.pVector[i] + v.pVector[i];
 	return t;
 }
 
@@ -179,7 +179,7 @@ TVector<ValType> TVector<ValType>::operator-(const TVector<ValType> &v)
 	if (Size != v.Size) throw ("No correct");
 	TVector<ValType> t(*this);
 	for (int i = 0; i < Size; i++)
-		t.pVector[i] = t.pVector[i] - v.pVector;
+		t.pVector[i] = t.pVector[i] - v.pVector[i];
 	return t;
 }
 
