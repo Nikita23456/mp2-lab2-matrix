@@ -94,7 +94,8 @@ ValType& TVector<ValType>::operator[](int pos)
 		return pVector[pos - StartIndex];
 	else
 		throw ("Ne correctno");
-
+	
+		
 }
 
 
@@ -227,12 +228,13 @@ template <class ValType>
 TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType> >(s)
 
 {
-	if ((s < 0) || (s > MAX_MATRIX_SIZE)) throw ("No correct");
+	if ((s < 0) || (s > MAX_MATRIX_SIZE)) 
+		throw ("No correct");
 	for (int i = 0; i < s; i++)
-	{
-		TVector<ValType> T(s, i);
-		pVector[i] = T;
-	}
+			pVector[i] = TVector<ValType>(s, i);
+	for (int i = 0; i < s; i++)
+		for (int j = i; j < s; j++)
+			pVector[i][j] = 0;
 }
 
 template <class ValType> // конструктор копирования
