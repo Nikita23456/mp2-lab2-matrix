@@ -51,7 +51,7 @@ TEST(TMatrix, can_set_and_get_element)//можно установить и получить элемент
 {
 	TMatrix<int> m(5);
 	m[2][2] = 7;
-	EXPECT_EQ(4, m[2][2]);
+	EXPECT_EQ(7, m[2][2]);
 }
 
 TEST(TMatrix, throws_when_set_element_with_negative_index)//бросает, когда задан элемент с отрицательным индексом
@@ -101,7 +101,8 @@ TEST(TMatrix, compare_equal_matrices_return_true)//сравнить равные матрицы верну
 	TMatrix<int> m1(5), m2(5);
 	m1[2][2] = 4;
 	m2[2][2] = 4;
-	ASSERT_TRUE(m1 == m2);
+	EXPECT_EQ(m1, m2);
+//	ASSERT_TRUE(m1 == m2);
 }
 
 TEST(TMatrix, compare_matrix_with_itself_return_true)//сравнить матрицу с самой собой вернуть true
